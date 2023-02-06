@@ -100,7 +100,7 @@ class MpgCalculatorGUI:
 
     
     def chemicalFormulaString(self):
-        if self.is_element_present:
+        if self.is_element_present == True:
             for i, e in enumerate(self.string_elements):
                 self.chemical_formula_string += e + str(self.integers_atoms[i])
 
@@ -130,8 +130,8 @@ class MpgCalculatorGUI:
             mole_per_gram = self.integers_atoms[index] * tb.elements[self.string_elements[index]]
 
             self.total_mole_per_gram += mole_per_gram
-            self.chemicalFormulaString()
             self.displayProcess()
+            self.chemicalFormulaString()
     
     def showResult(self):
         self.splitter(self.textBox.get('1.0', tk.END))
