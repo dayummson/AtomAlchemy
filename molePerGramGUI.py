@@ -48,10 +48,20 @@ class MpgCalculatorGUI:
         self.total_mole_per_gram = 0
 
         
+        #variables for displaying the results
+        self.chemical_formula_string = ""
+        
 
+
+        #protocol for closing the window
+        self.root.protocol('WM_DELETE_WINDOW', self.sureClosing)
+
+        #executes the code
         self.root.mainloop()
     
     #interface methods
+    
+    #function to clear the console and also setting the values to default
     def clearConsole(self):
         self.textBox.delete(1.0, tk.END)
         self.splitted_characters = []
@@ -59,6 +69,42 @@ class MpgCalculatorGUI:
         self.integers_atoms = []
         self.is_element_present = False
         self.total_mole_per_gram = 0
+        self.chemical_formula_string = ""
+    
+
+    #asking user i wanting to quit for the last time
+    def sureClosing(self):
+        if messagebox.askyesno(title='Quit?', message='Do you really want to quit?'):
+            self.root.destroy()
+            self.clearConsole()
+    
+    #function to display the process in the interface
+    def displayProcess(self):
+        self.recent_calculation_label = tk.Label(self.root, text='*RECENT COMPUTATIONS*',font=('monospace', 15), bg='#BDD2FA')
+        self.recent_calculation_label.place(x=10, y=200)
+
+
+        self.chemical_formula_label = tk.Label(self.root, text='Chemical Formula: ', font=('monospace', 15), bg='#BDD2FA')
+        self.chemical_formula_label.place(x=10, y=230)
+        self.formula_label = tk.Label(self.root, text=self.chemical_formula_string,font=('monospace', 15), bg='#BDD2FA')
+        self.formula_label.place(x=230, y=230)
+
+        self.total_mole_per_gram_label = tk.Label(self.root, text='Total Moles Per Gram: ', font=('monospace', 15), bg='#BDD2FA')
+        self.total_mole_per_gram_label.place(x=10, y=270)
+
+        self.string_total_mole_per_gram = str(self.total_mole_per_gram) + " g/mol"
+        self.mole_per_gram_label = tk.Label(self.root, text=self.string_total_mole_per_gram, font=('monospace', 15), bg='#BDD2FA')
+        self.mole_per_gram_label.place(x=270, y=270)
+
+
+
+    
+    def chemicalFormulaString(self):
+        if self.is_element_present:
+            for i, e in enumerate(self.string_elements):
+                self.chemical_formula_string += e + str(self.integers_atoms[i])
+
+
 
     #calculation methods
     #functions and methods
@@ -84,11 +130,11 @@ class MpgCalculatorGUI:
             mole_per_gram = self.integers_atoms[index] * tb.elements[self.string_elements[index]]
 
             self.total_mole_per_gram += mole_per_gram
-            self.textBox.delete(1.0, 'end')
-            self.textBox.insert(1.0, f'total mole is {self.total_mole_per_gram}')
+            self.chemicalFormulaString()
+            self.displayProcess()
     
     def showResult(self):
-        self.splitter(self.textBox.get(1.0, 'end'))
+        self.splitter(self.textBox.get('1.0', tk.END))
         self.convertCharacters()
         self.validateCharacter()
         if self.is_element_present:
