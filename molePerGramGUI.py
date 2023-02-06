@@ -30,8 +30,8 @@ class MpgCalculatorGUI:
         self.textBox.pack(padx=10, pady=10)
         
         #description for the image
-        self.image_a = ImageTk.PhotoImage(Image.open()) #must put image to load!
-        self.image_b = ImageTk.PhotoImage(Image.open())
+        self.image_a = ImageTk.PhotoImage(Image.open('Group 1.png'))
+        self.image_b = ImageTk.PhotoImage(Image.open('Group 2.png'))
 
         #buttons for calcution and clearing the console
         self.calcButton = tk.Button(self.root, text="Calculate", image=self.image_a)
