@@ -131,12 +131,12 @@ class MpgCalculatorGUI:
 
             self.total_mole_per_gram += mole_per_gram
             self.displayProcess()
-            self.chemicalFormulaString()
     
     def showResult(self):
         self.splitter(self.textBox.get('1.0', tk.END))
         self.convertCharacters()
         self.validateCharacter()
+        self.chemicalFormulaString()
         if self.is_element_present:
             self.calculateMolePerGram()
         else:
