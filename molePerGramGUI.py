@@ -28,14 +28,18 @@ class MpgCalculatorGUI:
         #description for the textbox
         self.textBox = tk.Text(self.root, height=1, font=('monospace', 15))
         self.textBox.pack(padx=10, pady=10)
+        
+        #description for the image
+        self.image_a = ImageTk.PhotoImage(Image.open(''))
+        self.image_b = ImageTk.PhotoImage(Image.open(''))
 
         #buttons for calcution and clearing the console
-        self.calcButton = tk.Button(self.root, text="Calculate")
-        self.clearButton = tk.Button(self.root, text="Clear")
+        self.calcButton = tk.Button(self.root, text="Calculate", image=self.image_a)
+        self.clearButton = tk.Button(self.root, text="Clear", image=self.image_b)
         self.calcButton.place(x=10, y=110, width=240, height=70)
         self.clearButton.place(x=250, y=110, width=240, height=70)
 
-
+        
         
 
         self.root.mainloop()
