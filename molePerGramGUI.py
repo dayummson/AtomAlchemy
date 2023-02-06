@@ -51,6 +51,7 @@ class MpgCalculatorGUI:
         #variables for displaying the results
         self.chemical_formula_string = ""
         
+        
 
 
         #protocol for closing the window
@@ -70,6 +71,7 @@ class MpgCalculatorGUI:
         self.is_element_present = False
         self.total_mole_per_gram = 0
         self.chemical_formula_string = ""
+        self.string_total_mole_per_gram = ""
     
 
     #asking user i wanting to quit for the last time
@@ -127,10 +129,14 @@ class MpgCalculatorGUI:
     
     def calculateMolePerGram(self):
         for index, atom in enumerate(self.integers_atoms):
-            mole_per_gram = self.integers_atoms[index] * tb.elements[self.string_elements[index]]
-
-            self.total_mole_per_gram += mole_per_gram
-            self.displayProcess()
+            try:
+                mole_per_gram = self.integers_atoms[index] * tb.elements[self.string_elements[index]]
+            except IndexError:
+                messagebox.showinfo(title="ERROR", message='Please Put valid chemical Formul!')
+                self.clearConsole()
+            else:
+                self.total_mole_per_gram += int(mole_per_gram)
+                self.displayProcess()
     
     def showResult(self):
         self.splitter(self.textBox.get('1.0', tk.END))
@@ -139,6 +145,7 @@ class MpgCalculatorGUI:
         self.chemicalFormulaString()
         if self.is_element_present:
             self.calculateMolePerGram()
+            self.clearConsole()
         else:
             messagebox.showinfo(title="ERROR", message='Please put valid chemical formula')
             self.clearConsole()
