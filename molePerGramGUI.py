@@ -125,14 +125,14 @@ class MpgCalculatorGUI:
             if element in tb.elements:
                 self.is_element_present = True
             else:
-                messagebox.showinfo(title="ERROR", message='Please make sure to type the element with spaces along with the number of atom')
+                messagebox.showinfo(title="ERROR", message='Please make sure to provide spaces for elements along with the number of atoms!')
     
     def calculateMolePerGram(self):
         for index, atom in enumerate(self.integers_atoms):
             try:
                 mole_per_gram = self.integers_atoms[index] * tb.elements[self.string_elements[index]]
             except IndexError:
-                messagebox.showinfo(title="ERROR", message='Please Put valid chemical Formul!')
+                messagebox.showinfo(title="ERROR", message='Please put valid Chemical Formula!')
                 self.clearConsole()
             else:
                 self.total_mole_per_gram += int(mole_per_gram)
