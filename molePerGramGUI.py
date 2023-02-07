@@ -126,7 +126,7 @@ class MpgCalculatorGUI:
                 messagebox.showinfo(title="ERROR", message='Please put valid Chemical Formula!')
                 self.clearConsole()
             else:
-                self.total_mole_per_gram += int(mole_per_gram)
+                self.total_mole_per_gram += mole_per_gram
                 self.displayProcess()
     
     def showResult(self):
