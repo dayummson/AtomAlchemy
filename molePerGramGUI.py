@@ -6,8 +6,6 @@ from PIL import Image, ImageTk
 from numpy import imag
 from table_of_elements import table_of_elements as tb
 
-
-
 #class for the entire interface
 
 class MpgCalculatorGUI:
@@ -39,7 +37,6 @@ class MpgCalculatorGUI:
         self.calcButton.place(x=10, y=110, width=240, height=70)
         self.clearButton.place(x=252, y=110, width=240, height=70)
 
-        
         #variables for the process
         self.splitted_characters = []
         self.string_elements = []
@@ -47,13 +44,9 @@ class MpgCalculatorGUI:
         self.is_element_present = False
         self.total_mole_per_gram = 0
 
-        
         #variables for displaying the results
         self.chemical_formula_string = ""
         
-        
-
-
         #protocol for closing the window
         self.root.protocol('WM_DELETE_WINDOW', self.sureClosing)
 
@@ -61,7 +54,6 @@ class MpgCalculatorGUI:
         self.root.mainloop()
     
     #interface methods
-    
     #function to clear the console and also setting the values to default
     def clearConsole(self):
         self.textBox.delete(1.0, tk.END)
@@ -85,7 +77,6 @@ class MpgCalculatorGUI:
         self.recent_calculation_label = tk.Label(self.root, text='*RECENT COMPUTATIONS*',font=('monospace', 15), bg='#BDD2FA')
         self.recent_calculation_label.place(x=10, y=200)
 
-
         self.chemical_formula_label = tk.Label(self.root, text='Chemical Formula: ', font=('monospace', 15), bg='#BDD2FA')
         self.chemical_formula_label.place(x=10, y=230)
         self.formula_label = tk.Label(self.root, text=self.chemical_formula_string,font=('monospace', 15), bg='#BDD2FA')
@@ -99,15 +90,15 @@ class MpgCalculatorGUI:
         self.mole_per_gram_label.place(x=270, y=270)
 
 
-
-    
+    #function to make a string for the chemical formula
     def chemicalFormulaString(self):
         if self.is_element_present == True:
             for i, e in enumerate(self.string_elements):
                 self.chemical_formula_string += e + str(self.integers_atoms[i])
 
+    #End of interface methods
 
-
+    
     #calculation methods
     #functions and methods
     def splitter(self, chemical_formula):
@@ -150,7 +141,5 @@ class MpgCalculatorGUI:
             messagebox.showinfo(title="ERROR", message='Please put valid chemical formula')
             self.clearConsole()
 
-
-    
 
 mpgCalculatorGui = MpgCalculatorGUI()
