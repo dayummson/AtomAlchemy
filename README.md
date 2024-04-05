@@ -7,6 +7,17 @@ clone the repo
 
 cd AtomAlchemy
 
+# create virtual env
+python3 -m venv myenv
+
+# activate the environment
+# Activate the virtual environment
+
+source myenv/bin/activate  # for Linux/macOS
+# or
+
+myenv\Scripts\activate      # for Windows
+
 pip install -r requirements.txt
 
 python3 AtomAlchemy.py

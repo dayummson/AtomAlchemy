@@ -1,0 +1,9 @@
+# Python version
+python>=3.6
+
+# PIL (Python Imaging Library)
+Pillow>=8.0.0
+
+# numpy
+numpy>=1.21.0
+
