@@ -8,7 +8,7 @@ clone the repo
 cd AtomAlchemy
 
 # create virtual env
-python3 -m venv myenv
+python -m venv myenv
 
 # activate the environment
 # Activate the virtual environment
