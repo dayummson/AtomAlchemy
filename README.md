@@ -18,8 +18,11 @@ source myenv/bin/activate  # for Linux/macOS
 
 myenv\Scripts\activate      # for Windows
 
+# install dependencies
+
 pip install -r requirements.txt
 
+# run the file
 python3 AtomAlchemy.py
 
 # And enjoy!
