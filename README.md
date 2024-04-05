@@ -20,6 +20,7 @@ myenv\Scripts\activate      # for Windows
 
 # install dependencies
 
+# Python requirements Python>=3.6
 pip install -r requirements.txt
 
 # run the file
